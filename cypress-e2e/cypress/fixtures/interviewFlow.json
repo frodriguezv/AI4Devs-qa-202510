@@ -1,0 +1,25 @@
+{
+  "interviewFlow": {
+    "positionName": "Software Engineer",
+    "interviewFlow": {
+      "interviewSteps": [
+        {
+          "id": 1,
+          "name": "Initial Screening"
+        },
+        {
+          "id": 2,
+          "name": "Technical Interview"
+        },
+        {
+          "id": 3,
+          "name": "HR Interview"
+        },
+        {
+          "id": 4,
+          "name": "Offer"
+        }
+      ]
+    }
+  }
+}

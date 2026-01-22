@@ -1,0 +1,30 @@
+[
+  {
+    "candidateId": 1,
+    "fullName": "John Doe",
+    "currentInterviewStep": "Initial Screening",
+    "averageScore": 5,
+    "applicationId": 101
+  },
+  {
+    "candidateId": 2,
+    "fullName": "Jane Smith",
+    "currentInterviewStep": "Initial Screening",
+    "averageScore": 4,
+    "applicationId": 102
+  },
+  {
+    "candidateId": 3,
+    "fullName": "Bob Johnson",
+    "currentInterviewStep": "Technical Interview",
+    "averageScore": 3,
+    "applicationId": 103
+  },
+  {
+    "candidateId": 4,
+    "fullName": "Alice Williams",
+    "currentInterviewStep": "HR Interview",
+    "averageScore": 5,
+    "applicationId": 104
+  }
+]
