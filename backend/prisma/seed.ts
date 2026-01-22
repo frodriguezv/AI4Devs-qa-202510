@@ -3,13 +3,33 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 async function main() {
+  console.log('Starting database seed...');
+  
+  // Clear existing data in the correct order (respecting foreign key constraints)
+  console.log('Clearing existing data...');
+  await prisma.interview.deleteMany({});
+  await prisma.application.deleteMany({});
+  await prisma.employee.deleteMany({});
+  await prisma.interviewStep.deleteMany({});
+  await prisma.interviewType.deleteMany({});
+  await prisma.position.deleteMany({});
+  await prisma.interviewFlow.deleteMany({});
+  await prisma.resume.deleteMany({});
+  await prisma.workExperience.deleteMany({});
+  await prisma.education.deleteMany({});
+  await prisma.candidate.deleteMany({});
+  await prisma.company.deleteMany({});
+  console.log('Existing data cleared.');
+
   // Create Companies
+  console.log('Creating companies...');
   const company1 = await prisma.company.create({
     data: {
       name: 'LTI',
     },
   });
 
+  console.log('Creating interview flows...');
   // Create Interview Flows
   const interviewFlow1 = await prisma.interviewFlow.create({
     data: {
@@ -23,6 +43,7 @@ async function main() {
     },
   });
 
+  console.log('Creating positions...');
   // Create Positions
   const position1 = await prisma.position.create({
     data: {
@@ -68,6 +89,7 @@ async function main() {
     },
   });
 
+  console.log('Creating candidates...');
   // Create Candidates
   const candidate1 = await prisma.candidate.create({
     data: {
@@ -189,6 +211,7 @@ async function main() {
     },
   });
 
+  console.log('Creating interview types...');
   // Create Interview Types
   const interviewType1 = await prisma.interviewType.create({
     data: {
@@ -212,7 +235,7 @@ async function main() {
   });
 
   
-
+  console.log('Creating interview steps...');
   // Create Interview Steps
   const interviewStep1 = await prisma.interviewStep.create({
     data: {
@@ -241,6 +264,7 @@ async function main() {
     },
   });
 
+  console.log('Creating employees...');
   // Create Employees
   const employee1 = await prisma.employee.create({
     data: {
@@ -260,6 +284,7 @@ async function main() {
     },
   });
 
+  console.log('Creating applications...');
   // Create Applications
   const application1 = await prisma.application.create({
     data: {
@@ -298,6 +323,7 @@ async function main() {
   });
 
 
+  console.log('Creating interviews...');
   // Create Interviews
   await prisma.interview.createMany({
     data: [
@@ -330,6 +356,18 @@ async function main() {
       }
     ],
   });
+  
+  console.log('✅ Database seeded successfully!');
+  console.log('Created:');
+  console.log('  - 1 company');
+  console.log('  - 2 interview flows');
+  console.log('  - 2 positions');
+  console.log('  - 3 candidates');
+  console.log('  - 3 interview types');
+  console.log('  - 3 interview steps');
+  console.log('  - 2 employees');
+  console.log('  - 4 applications');
+  console.log('  - 3 interviews');
 }
 
 main()
