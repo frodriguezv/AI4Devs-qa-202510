@@ -25,8 +25,8 @@ export class Candidate {
         this.email = data.email;
         this.phone = data.phone;
         this.address = data.address;
-        this.educations = data.educations || [];
-        this.workExperiences = data.workExperiences || [];
+        this.educations = data.educations ? data.educations.map((edu: any) => new Education(edu)) : [];
+        this.workExperiences = data.workExperiences ? data.workExperiences.map((exp: any) => new WorkExperience(exp)) : [];
         this.resumes = data.resumes || [];
         this.applications = data.applications || [];
     }
@@ -47,8 +47,8 @@ export class Candidate {
                 create: this.educations.map(edu => ({
                     institution: edu.institution,
                     title: edu.title,
-                    startDate: edu.startDate,
-                    endDate: edu.endDate
+                    startDate: new Date(edu.startDate),
+                    endDate: edu.endDate ? new Date(edu.endDate) : undefined
                 }))
             };
         }
@@ -60,8 +60,8 @@ export class Candidate {
                     company: exp.company,
                     position: exp.position,
                     description: exp.description,
-                    startDate: exp.startDate,
-                    endDate: exp.endDate
+                    startDate: new Date(exp.startDate),
+                    endDate: exp.endDate ? new Date(exp.endDate) : undefined
                 }))
             };
         }
@@ -71,7 +71,8 @@ export class Candidate {
             candidateData.resumes = {
                 create: this.resumes.map(resume => ({
                     filePath: resume.filePath,
-                    fileType: resume.fileType
+                    fileType: resume.fileType,
+                    uploadDate: resume.uploadDate || new Date()
                 }))
             };
         }
